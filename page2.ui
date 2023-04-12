@@ -22,7 +22,7 @@
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>40</y>
+      <y>70</y>
       <width>261</width>
       <height>301</height>
      </rect>
@@ -97,6 +97,9 @@
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_checkCapcha">
@@ -274,6 +277,19 @@
       <string>satus..</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_back">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>50</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>back</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

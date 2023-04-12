@@ -19,7 +19,9 @@ class Page2 : public QMainWindow
 public:
     explicit Page2(QWidget *parent = nullptr);
     ~Page2();
-
+public slots:
+    QString generateCaptcha();
+    int checkusername(QString s);
 private slots:
 
 
@@ -30,6 +32,10 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_generate_capcha_clicked();
+
+
+
+    void on_pushButton_back_clicked();
 
 private:
     Ui::Page2 *ui;
