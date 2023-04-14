@@ -1,6 +1,7 @@
 #include "page2.h"
 #include "ui_page2.h"
 
+#include "PublicAttributes.h"
 #include "page3.h"
 #include <QSqlDatabase>
 #include "QSqlDriver"
@@ -11,7 +12,7 @@
 #include "qmessagebox.h"
 
 QString string_captcha;
-int r;
+
 
 
 
@@ -134,6 +135,9 @@ void Page2::on_pushButtonlogin_clicked()
         }
             if(count==1){
                 ui->label_satus->setText("username and password is correct");
+                this->hide();
+                page3 *w3=new page3;
+                w3->show();
             }
             if(count>1){
                 ui->label_satus->setText("dupliate username and password ");
@@ -186,25 +190,32 @@ void Page2::on_pushButton_singin_clicked()
         username2=ui->lineEdit_username_2->text();
         password2=ui->lineEdit_password_2->text();
 
-       if(!database.isOpen()){
-            qDebug()<<  "failed to open the database";
-            return ;
-        }
+        if(!database.isOpen()){
+             qDebug()<<  "failed to open the database";
+             return ;
+         }
+
+             qry.prepare("insert into messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+             if(qry.exec()){
+                 QMessageBox::information(this,"","done!");
+             }
 
 
-    r =rand()%10000;
-        qry.prepare("insert into messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
-        if(qry.exec()){
-            QMessageBox::information(this,"","enter the confirmation code "+QString::number(r));
 
-        }
+       page3 *w3 = new page3;
+       this->hide();
+       w3->show();
+
+
+
+
     }
 
 
 
 
 void Page2::on_pushButton_2_clicked()
-{
+{   ui->pushButton_back->show();
     ui->groupBox_2->show();
     ui->groupBox->hide();
 
@@ -222,7 +233,7 @@ void Page2::on_pushButton_generate_capcha_clicked()
 
 
 void Page2::on_pushButton_back_clicked()
-{   ui->pushButton_back->show();
+{   ui->pushButton_back->hide();
     ui->groupBox->show();
     ui->groupBox_2->hide();
 

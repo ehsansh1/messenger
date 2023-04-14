@@ -21,7 +21,7 @@ Page1::~Page1()
 void Page1::on_pushButton_clicked()
 {
     this->hide();
-    Page2 *p2 = new Page2;
+    page2 *p2 = new page2;
     p2->show();
 
 

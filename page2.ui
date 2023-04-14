@@ -21,14 +21,14 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>70</y>
+      <x>330</x>
+      <y>50</y>
       <width>261</width>
       <height>301</height>
      </rect>
     </property>
     <property name="title">
-     <string>singup</string>
+     <string/>
     </property>
     <widget class="QPushButton" name="pushButton_singin">
      <property name="geometry">
@@ -158,8 +158,8 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>70</y>
+      <x>270</x>
+      <y>50</y>
       <width>361</width>
       <height>271</height>
      </rect>
@@ -168,7 +168,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="title">
-     <string>loging</string>
+     <string/>
     </property>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
@@ -301,8 +301,8 @@
    <widget class="QPushButton" name="pushButton_back">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>50</y>
+      <x>330</x>
+      <y>30</y>
       <width>71</width>
       <height>21</height>
      </rect>
