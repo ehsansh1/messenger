@@ -23,8 +23,13 @@
       <height>241</height>
      </rect>
     </property>
+<<<<<<< HEAD
     <property name="styleSheet">
      <string notr="true">background-color: rgb(34, 93, 255);</string>
+=======
+    <property name="title">
+     <string/>
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
     </property>
     <property name="title">
      <string/>
@@ -32,10 +37,17 @@
     <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
+<<<<<<< HEAD
        <x>30</x>
        <y>40</y>
        <width>281</width>
        <height>131</height>
+=======
+       <x>20</x>
+       <y>30</y>
+       <width>191</width>
+       <height>31</height>
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">

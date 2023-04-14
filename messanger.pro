@@ -17,6 +17,10 @@ SOURCES += \
 
 HEADERS += \
     confirmationcode.h \
+<<<<<<< HEAD
+=======
+    confirmationcode.h \
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
     page1.h \
     page2.h \
     page3.h \

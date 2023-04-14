@@ -12,8 +12,16 @@
 #include "qmessagebox.h"
 #include "confirmationcode.h"
 QString string_captcha;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
 
 
+int r_global = 0;
 
 int r_global = 0;
 
@@ -136,6 +144,11 @@ void Page2::on_pushButtonlogin_clicked()
         }
             if(count==1){
                 ui->label_satus->setText("username and password is correct");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
 
                 confirmation_r ob;
                 ob.r=rand()%10000;
@@ -143,6 +156,7 @@ void Page2::on_pushButtonlogin_clicked()
 
 
 
+<<<<<<< HEAD
                 page3 *w3 = new page3;
                 this->hide();
                 w3->show();
@@ -152,10 +166,27 @@ void Page2::on_pushButtonlogin_clicked()
 
 
 
+=======
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
                 page3 *newW3 = new page3;
                 this->hide();
                 newW3->show();
 
+<<<<<<< HEAD
+=======
+                 QMessageBox::warning(this,"","your confirmation code is"+QString::number(ob.r));
+
+
+
+
+
+
+=======
+                this->hide();
+                page3 *w3=new page3;
+                w3->show();
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
             }
             if(count>1){
                 ui->label_satus->setText("dupliate username and password ");
@@ -214,12 +245,24 @@ void Page2::on_pushButton_singin_clicked()
              return ;
          }
 
+<<<<<<< HEAD
              qry.prepare("INSERT INTO messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+=======
+<<<<<<< HEAD
+             qry.prepare("INSERT INTO messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+=======
+             qry.prepare("insert into messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
              if(qry.exec()){
                  QMessageBox::information(this,"","done!");
              }
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
          confirmation_r ob;
          ob.r=rand()%10000;
          r_global = ob.r;
@@ -231,6 +274,15 @@ void Page2::on_pushButton_singin_clicked()
          w3->show();
 
           QMessageBox::warning(this,"","your confirmation code is"+QString::number(ob.r));
+<<<<<<< HEAD
+=======
+=======
+
+       page3 *w3 = new page3;
+       this->hide();
+       w3->show();
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
+>>>>>>> b810aeec8e7c09d68e7ca96bf5104e924d5fa0b9
 
 
 
