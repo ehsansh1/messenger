@@ -23,11 +23,11 @@
       <x>20</x>
       <y>0</y>
       <width>621</width>
-      <height>211</height>
+      <height>231</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/new/prefix1/i1.jfif);</string>
+     <string notr="true">border-image: url(:/new/prefix2/facebook-messenger-blue-logo-4k-blue-neon-lights-creative-blue-abstract-background (1).jpeg);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
@@ -39,8 +39,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>210</y>
+      <x>220</x>
+      <y>230</y>
       <width>201</width>
       <height>81</height>
      </rect>
@@ -59,14 +59,14 @@
 font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
-     <string>telegram desktop</string>
+     <string>Desktop Messenger</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>270</y>
+      <x>200</x>
+      <y>300</y>
       <width>251</width>
       <height>61</height>
      </rect>
@@ -76,22 +76,20 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
 font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
-     <string>welcome to telegram desktop</string>
+     <string>welcome to desktop messenger</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>330</y>
+      <x>230</x>
+      <y>380</y>
       <width>171</width>
       <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(0, 85, 255);
-color: rgb(0, 0, 0);
-color: rgb(0, 0, 0);
 </string>
     </property>
     <property name="text">

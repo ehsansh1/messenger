@@ -1,6 +1,7 @@
 #include "page2.h"
 #include "ui_page2.h"
 
+#include "PublicAttributes.h"
 #include "page3.h"
 #include <QSqlDatabase>
 #include "QSqlDriver"
@@ -9,11 +10,11 @@
 #include "qdebug.h"
 #include "qstackedlayout.h"
 #include "qmessagebox.h"
-
+#include "confirmationcode.h"
 QString string_captcha;
-int r;
 
 
+int r_global = 0;
 
 Page2::Page2(QWidget *parent) :
     QMainWindow(parent),
@@ -33,7 +34,7 @@ Page2::Page2(QWidget *parent) :
     ui->label_capcha->setFont(font);
 
         database=QSqlDatabase::addDatabase("QSQLITE");
-        database.setDatabaseName("C:\\mydb\\messangerProject.db");
+        database.setDatabaseName("c:\\mydb\\messangerProject.db");
         database.open();
 
         if(!database.open()){
@@ -127,13 +128,33 @@ void Page2::on_pushButtonlogin_clicked()
 
 
         QSqlQuery qry;
-        if(qry.exec("SELECT name FROM messangerDatabase  where name = '"+username+"'  and password = '"+password+"' " )){
+        if(qry.exec("SELECT name FROM messangerDatabase  WHERE name = '"+username+"'  and password = '"+password+"' " )){
         int count=0;
         while(qry.next()){
             count++;
         }
             if(count==1){
                 ui->label_satus->setText("username and password is correct");
+
+                confirmation_r ob;
+                ob.r=rand()%10000;
+                r_global = ob.r;
+
+
+
+                page3 *w3 = new page3;
+                this->hide();
+                w3->show();
+
+                ob.r=rand()%10000;
+                r_global = ob.r;
+
+
+
+                page3 *newW3 = new page3;
+                this->hide();
+                newW3->show();
+
             }
             if(count>1){
                 ui->label_satus->setText("dupliate username and password ");
@@ -159,20 +180,17 @@ void Page2::on_pushButton_singin_clicked()
         return ;
     }
 
+    QString s2;
+    s2=ui->lineEdit_username_2->text();
+    if(checkusername(s2)==0){
+        return;
+    }
 
     QSqlQuery qry;
     qry.exec("SELECT name FROM messangerDatabase  where name = '"+username2+"' " );
     if(qry.first()){
          QMessageBox::warning(this,"","duplicat username");
          return;
-    }
-
-
-
-    QString s2;
-    s2=ui->lineEdit_username_2->text();
-    if(checkusername(s2)==0){
-        return;
     }
     s2=ui->lineEdit_password_2->text();
     if(checkpassword(s2)==0){
@@ -186,25 +204,39 @@ void Page2::on_pushButton_singin_clicked()
         username2=ui->lineEdit_username_2->text();
         password2=ui->lineEdit_password_2->text();
 
-       if(!database.isOpen()){
-            qDebug()<<  "failed to open the database";
-            return ;
-        }
+        if(!database.isOpen()){
+             qDebug()<<  "failed to open the database";
+             return ;
+         }
+
+             qry.prepare("INSERT INTO messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+             if(qry.exec()){
+                 QMessageBox::information(this,"","done!");
+             }
 
 
-    r =rand()%10000;
-        qry.prepare("insert into messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
-        if(qry.exec()){
-            QMessageBox::information(this,"","enter the confirmation code "+QString::number(r));
+         confirmation_r ob;
+         ob.r=rand()%10000;
+         r_global = ob.r;
 
-        }
+
+
+         page3 *w3 = new page3;
+         this->hide();
+         w3->show();
+
+          QMessageBox::warning(this,"","your confirmation code is"+QString::number(ob.r));
+
+
+
+
     }
 
 
 
 
 void Page2::on_pushButton_2_clicked()
-{
+{   ui->pushButton_back->show();
     ui->groupBox_2->show();
     ui->groupBox->hide();
 
@@ -222,7 +254,7 @@ void Page2::on_pushButton_generate_capcha_clicked()
 
 
 void Page2::on_pushButton_back_clicked()
-{   ui->pushButton_back->show();
+{   ui->pushButton_back->hide();
     ui->groupBox->show();
     ui->groupBox_2->hide();
 

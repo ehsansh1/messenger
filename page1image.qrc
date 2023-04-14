@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/prefix2">
+        <file>facebook-messenger-blue-logo-4k-blue-neon-lights-creative-blue-abstract-background (1).jpeg</file>
+    </qresource>
+    <qresource prefix="/new/prefix"/>
+    <qresource prefix="/new/prefix1"/>
+</RCC>

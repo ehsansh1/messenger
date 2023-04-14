@@ -19,7 +19,9 @@ class Page2 : public QMainWindow
 public:
     explicit Page2(QWidget *parent = nullptr);
     ~Page2();
+
 public slots:
+
     QString generateCaptcha();
     bool checkusername(QString s);
     bool checkchar(QString s);
