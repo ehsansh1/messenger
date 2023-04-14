@@ -14,6 +14,7 @@
 QString string_captcha;
 
 
+
 int r_global = 0;
 
 Page2::Page2(QWidget *parent) :
@@ -97,11 +98,11 @@ bool Page2::checkchar(QString s)
 bool Page2::checkpassword(QString s)
 {
     if(s.length()<7){
-        QMessageBox::warning(this,"","password should be more than 6 charecter");
+        QMessageBox::warning(this,"","password should be more than 6 character");
         return false;
     }
     if (checkchar(s)==0){
-         QMessageBox::warning(this,"","password must include this charecters ($ # % ^ & *)");
+         QMessageBox::warning(this,"","password must include this characters ($ # % ^ & *)");
         return false;
     }
     return true;
@@ -183,6 +184,10 @@ void Page2::on_pushButton_singin_clicked()
     QString s2;
     s2=ui->lineEdit_username_2->text();
     if(checkusername(s2)==0){
+        return;
+    }
+    if (checkchar(s2)==1){
+         QMessageBox::warning(this,"","username shoudn't include this characters ($ # % ^ & *)");
         return;
     }
 
