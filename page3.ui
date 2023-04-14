@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QGroupBox" name="groupBox_page3">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -24,14 +24,14 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string/>
     </property>
     <widget class="QLabel" name="label_confirmation">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>171</width>
+       <width>191</width>
        <height>31</height>
       </rect>
      </property>
