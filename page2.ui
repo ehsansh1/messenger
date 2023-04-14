@@ -76,8 +76,11 @@
      <property name="contextMenuPolicy">
       <enum>Qt::CustomContextMenu</enum>
      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
      <property name="placeholderText">
-      <string>Password</string>
+      <string>password</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_capcha">
@@ -129,6 +132,23 @@
      </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/new/prefix1/download1.jpg);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_showpass">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>60</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix1/show pass.jpg);
+</string>
      </property>
      <property name="text">
       <string/>

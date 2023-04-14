@@ -21,7 +21,10 @@ public:
     ~Page2();
 public slots:
     QString generateCaptcha();
-    int checkusername(QString s);
+    bool checkusername(QString s);
+    bool checkchar(QString s);
+    bool checkpassword(QString s);
+
 private slots:
 
 
@@ -36,6 +39,9 @@ private slots:
 
 
     void on_pushButton_back_clicked();
+
+
+    void on_pushButton_showpass_clicked();
 
 private:
     Ui::Page2 *ui;

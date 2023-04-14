@@ -1,6 +1,7 @@
 #include "page2.h"
 #include "ui_page2.h"
 
+#include "page3.h"
 #include <QSqlDatabase>
 #include "QSqlDriver"
 #include "QSqlQuery"
@@ -9,7 +10,8 @@
 #include "qstackedlayout.h"
 #include "qmessagebox.h"
 
-QString s;
+QString string_captcha;
+int r;
 
 
 
@@ -66,13 +68,44 @@ QString Page2::generateCaptcha()
     }
 }
 
-int Page2::checkusername(QString s)
+bool Page2::checkusername(QString s)
+{
+        if(s[0]>=48 && s[0]<=57){
+            QMessageBox::warning(this,"","username shoudn't start with number");
+            return false ;
+        }
+        if(s.length()<5){
+            QMessageBox::warning(this,"","username shoudn't be smaller less than 5 charcter");
+            return false;
+        }
+        return true;
+}
+
+bool Page2::checkchar(QString s)
 {
     int i;
     for(i=0;i<s.length();i++){
-
+         if((s[i]>=35 && s[i]<=38) || s[i]== 42 || s[i]== 94)
+         {
+            return true;
+         }
     }
+    return false;
 }
+
+bool Page2::checkpassword(QString s)
+{
+    if(s.length()<7){
+        QMessageBox::warning(this,"","password should be more than 6 charecter");
+        return false;
+    }
+    if (checkchar(s)==0){
+         QMessageBox::warning(this,"","password must include this charecters ($ # % ^ & *)");
+        return false;
+    }
+    return true;
+}
+
 
 
 
@@ -112,36 +145,44 @@ void Page2::on_pushButtonlogin_clicked()
         else {
             qDebug()<< "database not loaded";
         }
-
-
-
-
-
-
-
-
-
-
 }
 
 
-
-
-
-
-
-
-
-
-
 void Page2::on_pushButton_singin_clicked()
+
 {
-    if(ui->lineEdit_checkCapcha->text()!=s){
-            QMessageBox::information(this,"","wrong capha");
+    QString username2,password2;
+    username2=ui->lineEdit_username_2->text();
+
+    if(!database.isOpen()){
+        qDebug()<<  "failed to open the database";
+        return ;
     }
-    else
-    {
-        QString username2,password2;
+
+
+    QSqlQuery qry;
+    qry.exec("SELECT name FROM messangerDatabase  where name = '"+username2+"' " );
+    if(qry.first()){
+         QMessageBox::warning(this,"","duplicat username");
+         return;
+    }
+
+
+
+    QString s2;
+    s2=ui->lineEdit_username_2->text();
+    if(checkusername(s2)==0){
+        return;
+    }
+    s2=ui->lineEdit_password_2->text();
+    if(checkpassword(s2)==0){
+        return;
+    }
+    if(ui->lineEdit_checkCapcha->text()!=string_captcha){
+            QMessageBox::information(this,"","wrong capha");
+            return;
+    }
+
         username2=ui->lineEdit_username_2->text();
         password2=ui->lineEdit_password_2->text();
 
@@ -150,13 +191,15 @@ void Page2::on_pushButton_singin_clicked()
             return ;
         }
 
-        QSqlQuery qry;
+
+    r =rand()%10000;
         qry.prepare("insert into messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
         if(qry.exec()){
-            QMessageBox::information(this,"","done!");
+            QMessageBox::information(this,"","enter the confirmation code "+QString::number(r));
+
         }
     }
-}
+
 
 
 
@@ -165,14 +208,14 @@ void Page2::on_pushButton_2_clicked()
     ui->groupBox_2->show();
     ui->groupBox->hide();
 
-        s = generateCaptcha();
-        ui->label_capcha->setText(s);
+        string_captcha = generateCaptcha();
+        ui->label_capcha->setText(string_captcha);
 
         }
 void Page2::on_pushButton_generate_capcha_clicked()
 {
-    s = generateCaptcha();
-    ui->label_capcha->setText(s);
+    string_captcha = generateCaptcha();
+    ui->label_capcha->setText(string_captcha);
     ui->label_capcha->setEnabled(false);
 
 }
@@ -182,6 +225,25 @@ void Page2::on_pushButton_back_clicked()
 {   ui->pushButton_back->show();
     ui->groupBox->show();
     ui->groupBox_2->hide();
+
+}
+
+
+int sw=0;
+
+
+
+void Page2::on_pushButton_showpass_clicked()
+{
+    if(sw==0){
+        ui->lineEdit_password_2->setEchoMode(QLineEdit::Normal);
+        ui->pushButton_showpass->setStyleSheet("border-image: url(:/new/prefix1/hide pass.jpg);");
+        sw=1;
+        return;
+        }
+    ui->pushButton_showpass->setStyleSheet("border-image: url(:/new/prefix1/show pass.jpg);");
+          ui->lineEdit_password_2->setEchoMode(QLineEdit::Password);
+    sw=0;
 
 }
 
