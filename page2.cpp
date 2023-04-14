@@ -12,6 +12,10 @@
 #include "qmessagebox.h"
 #include "confirmationcode.h"
 QString string_captcha;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
 
 
 int r_global = 0;
@@ -135,6 +139,7 @@ void Page2::on_pushButtonlogin_clicked()
         }
             if(count==1){
                 ui->label_satus->setText("username and password is correct");
+<<<<<<< HEAD
 
 
                 confirmation_r ob;
@@ -154,6 +159,11 @@ void Page2::on_pushButtonlogin_clicked()
 
 
 
+=======
+                this->hide();
+                page3 *w3=new page3;
+                w3->show();
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
             }
             if(count>1){
                 ui->label_satus->setText("dupliate username and password ");
@@ -211,12 +221,17 @@ void Page2::on_pushButton_singin_clicked()
              return ;
          }
 
+<<<<<<< HEAD
              qry.prepare("INSERT INTO messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+=======
+             qry.prepare("insert into messangerDatabase(name,password)values('"+username2+"','"+password2+"' ) ");
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
              if(qry.exec()){
                  QMessageBox::information(this,"","done!");
              }
 
 
+<<<<<<< HEAD
          confirmation_r ob;
          ob.r=rand()%10000;
          r_global = ob.r;
@@ -228,6 +243,12 @@ void Page2::on_pushButton_singin_clicked()
          w3->show();
 
           QMessageBox::warning(this,"","your confirmation code is"+QString::number(ob.r));
+=======
+
+       page3 *w3 = new page3;
+       this->hide();
+       w3->show();
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
 
 
 

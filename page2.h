@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef PAGE2_H
 #define PAGE2_H
 
@@ -52,3 +53,5 @@ private:
 };
 
 #endif // PAGE2_H
+=======
+>>>>>>> 1ff2400dd384783fc2575d3afe0aaf9bbf95c6b4
